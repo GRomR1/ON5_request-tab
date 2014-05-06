@@ -61,6 +61,7 @@ var request_quotas_widgets = '\
                 <div style="display:inline-block;">' + tr("Topic number: ") + '</div>\
                 <div style="display:inline-block;">\
 		  <select name="topic_number" id="topic" style="-moz-appearance: none;text-indent: 1px;text-overflow: \'\';">\
+		    <option value="No topic">'+tr("No topic")+'</option>\
 		    <option value="01-3-1113-2014/2018">01-3-1113-2014/2018</option>\
 		    <option value="01-3-1114-2014/2018">01-3-1114-2014/2018</option>\
 		    <option value="01-3-1115-2014/2018">01-3-1115-2014/2018</option>\
