@@ -1,8 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
 require 'net/smtp'
+require 'net/http'
+require 'uri'
+require 'json'
 
-=begin
+=begin парсим список тем
 def get_links(url)
   str = "0"
   Nokogiri::HTML(open(url).read).css("a").map do |link|
@@ -45,9 +48,20 @@ CPU: " + params[:cpu] + "
 Тип ОС: " + params[:os] + "
 Комментарий: " + params[:comment]
 
-  Net::SMTP.start('localhost') do |smtp|
-    smtp.send_message message, params[:email], 
-                             "cloud@jinr.ru"
+  begin
+    Net::SMTP.start('localhost') do |smtp|
+      smtp.send_message message, params[:email], 
+			      params[:email]
+    content_type :json
+    {:message => "Your message has been sent successfuly"}.to_json
   end
-
+  rescue Exception => e  
+    logger.error("[SendMail ERROR]: " + e)
+    content_type :json
+    {:error => "Something went wrong, please try again later"}.to_json
+  end
 end
+
+
+
+
