@@ -51,7 +51,7 @@ CPU: " + params[:cpu] + "
   begin
     Net::SMTP.start('localhost') do |smtp|
       smtp.send_message message, params[:email], 
-			      params[:email]
+					"cloud@jinr.ru"
     content_type :json
     {:message => "Your message has been sent successfuly"}.to_json
   end
@@ -61,7 +61,3 @@ CPU: " + params[:cpu] + "
     {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
   end
 end
-
-
-
-
