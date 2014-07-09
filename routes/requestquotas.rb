@@ -58,7 +58,7 @@ CPU: " + params[:cpu] + "
   rescue Exception => e  
     logger.error("[SendMail ERROR]: " + e)
     content_type :json
-    {:error => "Something went wrong, please try again later"}.to_json
+    {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
   end
 end
 
