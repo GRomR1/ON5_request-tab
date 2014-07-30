@@ -128,17 +128,17 @@ var request_quotas_widgets = '\
       <div class="row  totals-info">\
         <div class="row">\
           <div class="small-centered  large-5 columns">\
-            <input class="registration_form numbersOnly" id="cpu" type="text" placeholder="' + tr("CPUs (cores)") + '">\
+            <input class="registration_form numbersOnly" id="cpu" type="text" placeholder="' + tr("CPUs (cores, total per all VMs)") + '">\
           </div>\
         </div>\
         <div class="row">\
           <div class="small-centered  large-5 columns">\
-            <input class="registration_form" id="ram" type="text" placeholder="' + tr("RAM (GB)") + '">\
+            <input class="registration_form" id="ram" type="text" placeholder="' + tr("RAM (GB, total per all VMs)") + '">\
           </div>\
         </div>\
         <div class="row">\
           <div class="small-centered  large-5 columns">\
-            <input class="registration_form" id="hdd" type="text" placeholder="' + tr("Storage (GB)") + '">\
+            <input class="registration_form" id="hdd" type="text" placeholder="' + tr("Storage (GB, total per all VMs)") + '">\
           </div>\
         </div>\
         <div class="row">\
