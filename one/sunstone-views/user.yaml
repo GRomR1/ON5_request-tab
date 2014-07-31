@@ -1,7 +1,6 @@
 small_logo: images/opennebula-sunstone-v4.0-small.png
 enabled_tabs:
     dashboard-tab: true
-    requestquotas-tab: true
     system-tab: false
     users-tab: false
     groups-tab: false
@@ -17,22 +16,29 @@ enabled_tabs:
     datastores-tab: true
     vnets-tab: true
     marketplace-tab: true
-    oneflow-dashboard: false
-    oneflow-services: false
-    oneflow-templates: false
+    oneflow-dashboard: true
+    oneflow-services: true
+    oneflow-templates: true
+    requestquotas-tab: true
+autorefresh: true
 tabs:
     dashboard-tab:
         panel_tabs:
         actions:
+            Dashboard.refresh: false
+            Sunstone.toggle_top: false
         widgets_three_per_row:
             #- users
         widgets_two_per_row:
             - network
             - storage
+            - user_quotas
+            - group_quotas
             #- hosts
             #- vms
         widgets_one_per_row:
             - vms
+        widgets_one_footer:
     requestquotas-tab:
         panel_tabs:
         actions:
@@ -42,7 +48,7 @@ tabs:
         actions:
     users-tab:
         panel_tabs:
-            user_info_panel: true
+            user_info_tab: true
             user_quotas_tab: true
         table_columns:
             - 0         # Checkbox
@@ -89,7 +95,8 @@ tabs:
             - 3         # Affected resources
             - 4         # Resource ID / Owned by
             - 5         # Allowed operations
-            #- 6         # ACL String
+            - 6         # Zone
+            #- 7         # ACL String
         actions:
             Acl.refresh: true
             Acl.create_dialog: true
@@ -190,9 +197,11 @@ tabs:
             input_output: true
             context: true
             scheduling: false
+            other: true
     images-tab:
         panel_tabs:
-            image_info_panel: true
+            image_info_tab: true
+            image_vms_tab: true
         table_columns:
             - 0         # Checkbox
             - 1         # ID
@@ -221,7 +230,7 @@ tabs:
             Image.delete: true
     files-tab:
         panel_tabs:
-            file_info_panel: true
+            file_info_tab: true
         table_columns:
             - 0         # Checkbox
             - 1         # ID
@@ -419,7 +428,7 @@ tabs:
             Service.delete: true
     oneflow-templates:
         panel_tabs:
-            service_template_info_panel: true
+            service_template_info_tab: true
             service_template_roles_tab: true
         table_columns:
             - 0         # Checkbox
