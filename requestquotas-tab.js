@@ -24,7 +24,6 @@ define(function(require) {
   var TAB_ID = require('./requestquotas-tab/tabId');
   
   var form_changed = false;
-  // Создаем хэш, заполненный значениями
 	var data = { 
 		full_name: '',
 		email: '',
@@ -118,11 +117,11 @@ define(function(require) {
 	
 	function _onSend() { 
 	
-		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
 		if(!form_changed)
 			return false;
 		var formValided = validateForm();
 		if(form_changed && formValided){
+			makeRequest();
 			Notifier.notifyMessage(Locale.tr("Request sended"));
 			$("button[href='Request.send']").attr("disabled", "disabled");
 		}else{
@@ -144,6 +143,7 @@ define(function(require) {
 	}
 	
 	function makeRequest(){
+	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
 	  $.post("sendmail", data).done(function(data){
 		if(data.error != null){ 
 		  Notifier.notifyError(Locale.tr(data.error));
@@ -161,25 +161,21 @@ define(function(require) {
 	}
 
 	function validateForm(){
-		// console.log("validate func:");
 	  var isValid = true;
 	  for (var key in data) {
 		if(key == 'comment')
 			continue;
 		var v = data[key];
-		  // console.log(key +"=>"+v);
 		if(v.length == 0){
 		  isValid = false;
 		}
 	  }
-		  // console.log("isValid="+isValid);
 	  if(!validateEmail(data['email'])) {
 		isValid = false;
 	  }
 	  if(!validateEmail(data['manager_email'])) {
 		isValid = false;
 	  }
-		  // console.log("isValid="+isValid);
 	  return isValid;
 	}
 	
