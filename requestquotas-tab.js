@@ -85,6 +85,7 @@ define(function(require) {
         user_name = user_json.USER.NAME;
 				
 		$(".registration_form").change(function(){
+			alert("Send clicked: " + form_changed);
 			form_changed = true;
 		});
 		$(".registration_form").keyup(function(){
@@ -126,7 +127,24 @@ define(function(require) {
   }
   
 	function _onSend() { 
-		alert("Send clicked" + form_changed);
+		var data = 
+		{ 
+				full_name: $("#full_name").val(),
+				email: $("#email").val(),
+				manager_full_name: $("#manager_full_name").val(),
+				manager_email: $("#manager_email").val(),
+				lab: $("#lab").val(),
+				topic: $("#topic").val(),
+				cpu: $("#cpu").val(),
+				ram: $("#ram").val(),
+				hdd: $("#hdd").val(),
+				vms: $("#vms").val(),
+				os:  $("#os").val(),
+				comment: $("#comment").val(),
+				user_id: user_id,
+				user_name: user_name
+	  }
+		alert("Send clicked: " + form_changed + "\n" + data);
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
