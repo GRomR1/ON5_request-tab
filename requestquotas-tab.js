@@ -88,45 +88,12 @@ define(function(require) {
       success: function(request, user_json) {
         user_id = user_json.USER.ID;
         user_name = user_json.USER.NAME;
-				
-		$(".registration_form").change(function(){
-			alert("Send clicked: " + form_changed);
-			form_changed = true;
-		});
-		$(".registration_form").keyup(function(){
-			if(validateForm()){
-				$('#send_request').prop('disabled', false);
-			//$("button[href='Request.send']").removeAttr("disabled");
-			}else{
-				$('#send_request').prop('disabled', true);
-			//$("button[href='Request.send']").attr("disabled", "disabled");
-			}
-		});
-		$("#lab").change(function(){
-			form_changed = true;
-		});
-		$("#os").change(function(){
-			form_changed = true;
-		});
-		$("#topic").change(function(){
-			form_changed = true;
-		});
-		
-
-		$("#email").keyup(function() {
-			showHideEmailValidityMessage("#email", "#email_validation_message");
-		});
-		$("#email").change(function() {
-			showHideEmailValidityMessage("#email", "#email_validation_message");
-		});
-		$("#manager_email").keyup(function() {
-			showHideEmailValidityMessage("#manager_email", "#manager_email_validation_message");
-		});
-		$("#manager_email").change(function() {
-			showHideEmailValidityMessage("#manager_email", "#manager_email_validation_message");
-		});
+		console.log("UID1:" + user_id + " "+ user_name);
 		  
         Sunstone.insertPanels(TAB_ID, user_json, TAB_ID, $(".sunstone-list", $("#" + TAB_ID)));
+        user_id = user_json.USER.ID;
+        user_name = user_json.USER.NAME;
+		console.log("UID2:" + user_id + " "+ user_name);
       }
     });
   }

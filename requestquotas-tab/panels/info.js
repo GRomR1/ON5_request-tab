@@ -65,7 +65,25 @@ define(function(require) {
   /*
     FUNCTION DEFINITIONS
    */
-
+   
+	function validateEmail(email){
+	  var re = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)*jinr\.ru$/;
+	  return re.test(email);
+	}
+	
+	function showHideEmailValidityMessage(email_input, email_message){
+	  $(email_input).css({'margin-bottom': '0px'});
+	  if(validateEmail($(email_input).val())){
+		$(email_message).html(tr("Email is valid")).css({'color': 'green'});
+		$(email_input).css({'border' : '1px solid green'});
+		return true;
+	  }else{  
+		$(email_message).html(tr("Not a valid email (only jinr.ru domain emails are accepted)")).css({'color': 'red'});
+		$(email_input).css({'border' : '1px solid #ff0000'});
+		return false;
+	  }
+	}
+	
   function _html() {
     return TemplateInfo({
       'element': this.element,
@@ -88,18 +106,47 @@ define(function(require) {
 	
 	context.off("change", "#full_name");
 	context.off("keyup", "#full_name");
-    // context.on("change", "#full_name", function() {
-      // var full_name = $(this).val();
-      // Sunstone.runAction("Request.change", "full_name", full_name);
-    // });
-    // context.on("keyup", "#full_name", function() {
-      // var full_name = $(this).val();
-      // Sunstone.runAction("Request.change", "full_name", full_name);
-    // });
 	$("#full_name").bind("keyup change", function() {
       var full_name = $(this).val();
       Sunstone.runAction("Request.change", "full_name", full_name);
 	})
+	
+	context.off("change", "#email");
+	context.off("keyup", "#email");
+	$("#email").bind("keyup change", function() {
+      var email = $(this).val();
+	  
+	  if(showHideEmailValidityMessage("#email", "#email_validation_message"))
+		Sunstone.runAction("Request.change", "email", email);
+	})
+	
+	context.off("change", "#manager_email");
+	context.off("keyup", "#manager_email");
+	$("#manager_email").bind("keyup change", function() {
+      var manager_email = $(this).val();
+	  
+	  if(showHideEmailValidityMessage("#manager_email", "#manager_email_validation_message"))
+		Sunstone.runAction("Request.change", "manager_email", manager_email);
+	})
+	
+	context.off("change", "#manager_full_name");
+	context.off("keyup", "#manager_full_name");
+	$("#manager_full_name").bind("keyup change", function() {
+      var manager_full_name = $(this).val();
+      Sunstone.runAction("Request.change", "manager_full_name", manager_full_name);
+	})
+	
+	context.off("change", "#lab");
+	$("#lab").bind("change", function() {
+      var lab = $(this).val();
+      Sunstone.runAction("Request.change", "lab", lab);
+	})
+	context.off("change", "#topic");
+	$("#topic").bind("change", function() {
+      var topic = $(this).val();
+      Sunstone.runAction("Request.change", "topic", topic);
+	})
+	
 	
 	
     // // Template update
