@@ -122,11 +122,12 @@ define(function(require) {
 		if(!form_changed)
 			return false;
 		var formValided = validateForm();
-		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+formValided);
 		if(form_changed && formValided){
-		  $("button[href='Request.send']").attr("disabled", "disabled");
+			Notifier.notifyMessage(Locale.tr("Request sended"));
+			$("button[href='Request.send']").attr("disabled", "disabled");
 		}else{
-		  $("button[href='Request.send']").removeAttr("disabled");  
+			Notifier.notifyError(Locale.tr("Your data doesn't valid"));
+			$("button[href='Request.send']").removeAttr("disabled");  
 		}
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
