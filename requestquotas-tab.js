@@ -154,6 +154,8 @@ define(function(require) {
 	function validateForm(){
 	  var isValid = true;
 	  for (var key in data) {
+		if(key == 'comment')
+			continue;
 		var v = data[key];
 		if(v.length == 0){
 		  isValid = false;
