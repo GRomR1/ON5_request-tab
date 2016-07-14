@@ -61,6 +61,38 @@ define(function(require) {
   }
 
   function _setup(context) {
+	context.off("change", "#cpu");
+	context.off("keyup", "#cpu");
+	$("#cpu").bind("keyup change", function() {
+      var cpu = $(this).val();
+      Sunstone.runAction("Request.change", "cpu", cpu);
+	})	
+	context.off("change", "#ram");
+	context.off("keyup", "#ram");
+	$("#ram").bind("keyup change", function() {
+      var ram = $(this).val();
+	  Sunstone.runAction("Request.change", "ram", ram);
+	})
+	context.off("change", "#hdd");
+	context.off("keyup", "#hdd");
+	$("#hdd").bind("keyup change", function() {
+      var hdd = $(this).val();
+	  Sunstone.runAction("Request.change", "hdd", hdd);
+	})
+	context.off("change", "#vms");
+	context.off("keyup", "#vms");
+	$("#vms").bind("keyup change", function() {
+      var vms = $(this).val();
+	  Sunstone.runAction("Request.change", "vms", vms);
+	})
+	context.off("change", "#os");
+	$("#os").bind("change", function() {
+      var os = $(this).val();
+      Sunstone.runAction("Request.change", "os", os);
+	})
+	
+	
+	  
     return false;
   }
 });

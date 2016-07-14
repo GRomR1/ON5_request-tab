@@ -118,7 +118,13 @@ define(function(require) {
 	function _onSend() { 
 	
 		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
-		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+validateForm());
+		var formValided = validateForm()
+		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+formValided);
+		if(formValided){
+		  $("button[href='Request.send']").removeAttr("disabled");  
+		}else{
+		  $("button[href='Request.send']").attr("disabled", "disabled");
+		}
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
@@ -135,12 +141,10 @@ define(function(require) {
 	function makeRequest(){
 	  $.post("sendmail", data).done(function(data){
 		if(data.error != null){ 
-			alert(Locale.tr(data.error));
-		  //notifyError(Locale.tr(data.error));
+		  Notifier.notifyError(Locale.tr(data.error));
 		}else{
 		  form_changed = false;
-			alert(Locale.tr(data.error));
-		  //notifyMessage(Locale.tr(data.message));
+		  Notifier.notifyMessage(Locale.tr(data.message));
 		}
 	  });
 	}
