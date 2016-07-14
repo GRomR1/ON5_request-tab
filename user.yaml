@@ -762,3 +762,4 @@ tabs:
             resources_tab: true
         actions:
             Request.next_click: true
+            Request.send: true
