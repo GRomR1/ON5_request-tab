@@ -175,7 +175,7 @@ define(function(require) {
 	  if(!validateEmail(data['email'])) {
 		isValid = false;
 	  }
-	  if(!validateEmail(data['manager_full_name'])) {
+	  if(!validateEmail(data['manager_email'])) {
 		isValid = false;
 	  }
 		  console.log("isValid="+isValid);
