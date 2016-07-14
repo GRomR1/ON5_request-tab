@@ -74,11 +74,11 @@ define(function(require) {
 	function showHideEmailValidityMessage(email_input, email_message){
 	  $(email_input).css({'margin-bottom': '0px'});
 	  if(validateEmail($(email_input).val())){
-		$(email_message).html(tr("Email is valid")).css({'color': 'green'});
+		$(email_message).html(Locale.tr("Email is valid")).css({'color': 'green'});
 		$(email_input).css({'border' : '1px solid green'});
 		return true;
 	  }else{  
-		$(email_message).html(tr("Not a valid email (only jinr.ru domain emails are accepted)")).css({'color': 'red'});
+		$(email_message).html(Locale.tr("Not a valid email (only jinr.ru domain emails are accepted)")).css({'color': 'red'});
 		$(email_input).css({'border' : '1px solid #ff0000'});
 		return false;
 	  }
