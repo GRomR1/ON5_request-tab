@@ -171,12 +171,14 @@ define(function(require) {
 		  isValid = false;
 		}
 	  }
+		  console.log("isValid="+isValid);
 	  if(!validateEmail(data['email'])) {
 		isValid = false;
 	  }
 	  if(!validateEmail(data['manager_full_name'])) {
 		isValid = false;
 	  }
+		  console.log("isValid="+isValid);
 	  return isValid;
 	}
 	

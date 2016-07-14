@@ -91,6 +91,12 @@ define(function(require) {
       var os = $(this).val();
       Sunstone.runAction("Request.change", "os", os);
 	})
+	context.off("change", "#comment");
+	context.off("keyup", "#comment");
+	$("#comment").bind("keyup change", function() {
+      var comment = $(this).val();
+	  Sunstone.runAction("Request.change", "comment", comment);
+	})
 	
 	
 	  
