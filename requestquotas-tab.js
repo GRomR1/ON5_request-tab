@@ -84,56 +84,60 @@ define(function(require) {
         user_id = user_json.USER.ID;
         user_name = user_json.USER.NAME;
 				
-		  $("#registration_form").change(function(){
-			  form_changed = true;
-		  });
-		  
-		  $("#registration_form").keyup(function(){
+		$(".registration_form").change(function(){
+			form_changed = true;
+		});
+		$(".registration_form").keyup(function(){
 			if(validateForm()){
-			  $("button[href='Request.create']").removeAttr("disabled");  
+				$('#send_request').prop('disabled', false);
+			//$("button[href='Request.send']").removeAttr("disabled");
 			}else{
-			  $("button[href='Request.create']").attr("disabled", "disabled");
+				$('#send_request').prop('disabled', true);
+			//$("button[href='Request.send']").attr("disabled", "disabled");
 			}
-		  });
-		  $("#lab").change(function(){
-			  form_changed = true;
-		  });
-		  $("#os").change(function(){
-			  form_changed = true;
-		  });
-		  $("#topic").change(function(){
-			  form_changed = true;
-		  });
-		  
+		});
+		$("#lab").change(function(){
+			form_changed = true;
+		});
+		$("#os").change(function(){
+			form_changed = true;
+		});
+		$("#topic").change(function(){
+			form_changed = true;
+		});
+		
 
-		  $("#email").keyup(function() {
+		$("#email").keyup(function() {
 			showHideEmailValidityMessage("#email", "#email_validation_message");
-		  });
-		  $("#email").change(function() {
+		});
+		$("#email").change(function() {
 			showHideEmailValidityMessage("#email", "#email_validation_message");
-		  });
-		  $("#manager_email").keyup(function() {
+		});
+		$("#manager_email").keyup(function() {
 			showHideEmailValidityMessage("#manager_email", "#manager_email_validation_message");
-		  });
-		  $("#manager_email").change(function() {
+		});
+		$("#manager_email").change(function() {
 			showHideEmailValidityMessage("#manager_email", "#manager_email_validation_message");
-		  });
+		});
+		  
         Sunstone.insertPanels(TAB_ID, user_json, TAB_ID, $(".sunstone-list", $("#" + TAB_ID)));
       }
     });
   }
   
-	function _onSend() {          
-        if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
-				//alert(tr("Your request has been sent"));
-			if(!form_changed){
-			  if(confirm( Locale.tr("You have already made the request. Do you want to repeat it?") )){
-				makeRequest();
-			  }
-			}else{
-			  makeRequest();
-			}
-        }
+	function _onSend() { 
+		alert("Send clicked" + form_changed);
+	
+        // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
+				// //alert(tr("Your request has been sent"));
+			// if(!form_changed){
+			  // if(confirm( Locale.tr("You have already made the request. Do you want to repeat it?") )){
+				// makeRequest();
+			  // }
+			// }else{
+			  // makeRequest();
+			// }
+        // }
 	}
 	
 	function makeRequest(){
