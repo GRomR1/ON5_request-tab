@@ -21,6 +21,7 @@ define(function(require) {
 
   var TemplateInfo = require('hbs!./resources/html');
   var Locale = require('utils/locale');
+  var Sunstone = require('sunstone');
 
   /*
     TEMPLATES

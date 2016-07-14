@@ -110,8 +110,9 @@ define(function(require) {
   }
   
 	function _onChange(key, value) { 
-		form_changed = true;
 		//console.log(key+"="+value);
+		$("button[href='Request.create']").removeAttr("disabled"); 
+		form_changed = true; 
 		data[key]=value;
 	}
 	
@@ -120,7 +121,7 @@ define(function(require) {
 		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
 		var formValided = validateForm()
 		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+formValided);
-		if(formValided){
+		if(form_changed && formValided){
 		  $("button[href='Request.send']").removeAttr("disabled");  
 		}else{
 		  $("button[href='Request.send']").attr("disabled", "disabled");
