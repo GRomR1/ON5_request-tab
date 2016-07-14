@@ -42,7 +42,7 @@ define(function(require) {
 		comment: '',
 		user_id: '',
 		user_name: ''
-	}
+	};
 
   _actions["Request.refresh"] = {
     type: "custom",
@@ -121,7 +121,7 @@ define(function(require) {
 	
 		console.log("Send clicked: " + form_changed + "\n" + data);
 		
-		  notifyMessage(Locale.tr(data.error));
+		  // notifyMessage(Locale.tr(data.error));
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
