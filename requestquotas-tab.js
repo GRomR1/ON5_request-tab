@@ -161,25 +161,25 @@ define(function(require) {
 	}
 
 	function validateForm(){
-		console.log("validate func:");
+		// console.log("validate func:");
 	  var isValid = true;
 	  for (var key in data) {
 		if(key == 'comment')
 			continue;
 		var v = data[key];
-		  console.log(key +"=>"+v);
+		  // console.log(key +"=>"+v);
 		if(v.length == 0){
 		  isValid = false;
 		}
 	  }
-		  console.log("isValid="+isValid);
+		  // console.log("isValid="+isValid);
 	  if(!validateEmail(data['email'])) {
 		isValid = false;
 	  }
 	  if(!validateEmail(data['manager_email'])) {
 		isValid = false;
 	  }
-		  console.log("isValid="+isValid);
+		  // console.log("isValid="+isValid);
 	  return isValid;
 	}
 	
