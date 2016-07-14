@@ -88,19 +88,15 @@ define(function(require) {
       success: function(request, user_json) {
         user_id = user_json.USER.ID;
         user_name = user_json.USER.NAME;
-		console.log("UID1:" + user_id + " "+ user_name);
 		  
         Sunstone.insertPanels(TAB_ID, user_json, TAB_ID, $(".sunstone-list", $("#" + TAB_ID)));
-        user_id = user_json.USER.ID;
-        user_name = user_json.USER.NAME;
-		console.log("UID2:" + user_id + " "+ user_name);
       }
     });
   }
   
 	function _onChange(a, b) { 
 		form_changed = true;
-		alert("change event:"+a+" " +b);
+		console.log(a+"="+b);
 	}
 	
 	function _onSend() { 
