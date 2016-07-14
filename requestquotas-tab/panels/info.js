@@ -67,22 +67,9 @@ define(function(require) {
    */
 
   function _html() {
-    // var groupTrHTML = TemplateChgrpTr({'element': this.element});
-
-    // // TODO: simplify interface?
-    // var strippedTemplate = $.extend({}, this.element.TEMPLATE);
-    // delete strippedTemplate["SSH_PUBLIC_KEY"];
-    // delete strippedTemplate["SUNSTONE"];
-
-    // var templateTableHTML = TemplateTable.html(strippedTemplate, RESOURCE,
-                                              // Locale.tr("Attributes"));
-    // //====
-
     return TemplateInfo({
       'element': this.element,
       'sunstone_template': this.element.TEMPLATE.SUNSTONE||{}
-      // 'groupTrHTML': groupTrHTML
-      // 'templateTableHTML': templateTableHTML
     });
   }
 
@@ -93,10 +80,18 @@ define(function(require) {
 		// $("#resources_tab-label").click();
 	// });
 
+	context.off("click", "#resource_tab_b");
 	context.on("click", "#resource_tab_b", function() {
 		// alert("buttonB clicked");
 		$("#resources_tab-label").click();
 	});
+	
+	context.off("change", "#full_name");
+    context.on("change", "#full_name", function() {
+      var full_name = $(this).val();
+
+      Sunstone.runAction("Request.change", that.element.ID, full_name);
+    });
 	
     // // Template update
     // // TODO: simplify interface?

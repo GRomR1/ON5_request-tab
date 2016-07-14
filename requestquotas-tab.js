@@ -42,6 +42,11 @@ define(function(require) {
     call: _onSend
   };
   
+  _actions["Request.change"] = {
+    type: "custom",
+    call: _onChange
+  };
+  
   // var _dialogs = [
     // require('tabs/users-tab/dialogs/password')
   // ];
@@ -126,6 +131,11 @@ define(function(require) {
     });
   }
   
+	function _onChange(a, b) { 
+		form_changed = true;
+		alert("change event:"+a+b);
+	}
+	
 	function _onSend() { 
 		var data = 
 		{ 
