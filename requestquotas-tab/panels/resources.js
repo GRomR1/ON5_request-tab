@@ -34,6 +34,8 @@ define(function(require) {
 
   var TAB_ID = require('../tabId');
   var PANEL_ID = require('./resources/panelId');
+  var XML_ROOT = "USER";
+  var PASSWORD_DIALOG_ID = require('tabs/users-tab/dialogs/password/dialogId');
 
   /*
     CONSTRUCTOR
@@ -42,6 +44,8 @@ define(function(require) {
   function Panel(info) {
     this.title = Locale.tr("Resources");
     this.icon = "fa-align-left";
+
+    this.element = info[XML_ROOT];
 
     return this;
   }
@@ -58,6 +62,7 @@ define(function(require) {
 
   function _html() {
 
+    return TemplateInfo();
   }
 
   function _setup(context) {
