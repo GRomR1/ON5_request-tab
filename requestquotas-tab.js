@@ -21,10 +21,7 @@ define(function(require) {
   var _actions = require('./users-tab/actions');
 
   var TAB_ID = require('./requestquotas-tab/tabId');
-  // var USERS_TAB_ID = require('tabs/users-tab/tabId');
   
-  var user_id;
-  var user_name;
   var form_changed = false;
   // Создаем хэш, заполненный значениями
 	var data = { 
@@ -32,13 +29,13 @@ define(function(require) {
 		email: '',
 		manager_full_name: '',
 		manager_email: '',
-		lab: '',
-		topic: '',
+		lab: Locale.tr("VBLHEP"),
+		lab: Locale.tr("No topic"),
 		cpu: '',
 		ram: '',
 		hdd: '',
 		vms: '',
-		os:  '',
+		os: Locale.tr("Linux"),
 		comment: '',
 		user_id: '',
 		user_name: ''
@@ -103,8 +100,8 @@ define(function(require) {
         id: -1
       },
       success: function(request, user_json) {
-        user_id = user_json.USER.ID;
-        user_name = user_json.USER.NAME;
+		data['user_id']=user_json.USER.ID;
+		data['user_name']=user_json.USER.NAME;
 		  
         Sunstone.insertPanels(TAB_ID, user_json, TAB_ID, $(".sunstone-list", $("#" + TAB_ID)));
       }
@@ -121,7 +118,7 @@ define(function(require) {
 	
 		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
 		
-		  // notifyMessage(Locale.tr(data.error));
+		  notifyMessage(Locale.tr(JSON.stringify(data)));
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
