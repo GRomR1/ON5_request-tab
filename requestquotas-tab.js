@@ -111,7 +111,7 @@ define(function(require) {
   
 	function _onChange(key, value) { 
 		//console.log(key+"="+value);
-		$("button[href='Request.create']").removeAttr("disabled"); 
+		$("button[href='Request.send']").removeAttr("disabled");  
 		form_changed = true; 
 		data[key]=value;
 	}
