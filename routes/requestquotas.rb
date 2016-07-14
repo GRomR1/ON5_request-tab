@@ -5,6 +5,11 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+get '/sendmail' do
+	"Hello, Sinatra!" 
+	params[:a]
+end
+
 post '/sendmail' do
 
 message = 
