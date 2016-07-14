@@ -18,6 +18,7 @@ define(function(require) {
   var Locale = require('utils/locale');
   var OpenNebulaUser = require('opennebula/user');
   var Sunstone = require('sunstone');
+  var Notifier = require('utils/notifier');
   var _actions = require('./users-tab/actions');
 
   var TAB_ID = require('./requestquotas-tab/tabId');
@@ -117,8 +118,7 @@ define(function(require) {
 	function _onSend() { 
 	
 		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
-		
-		  notifyMessage(Locale.tr(JSON.stringify(data)));
+		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+validateForm());
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
@@ -153,12 +153,16 @@ define(function(require) {
 
 	function validateForm(){
 	  var isValid = true;
-	  $(".registration_form").each(function(){
-		if($(this).val().length == 0){
+	  for (var key in data) {
+		var v = data[key];
+		if(v.length == 0){
 		  isValid = false;
 		}
-	  });
-	  if(!validateEmail($("#email").val())){
+	  }
+	  if(!validateEmail(data['email'])) {
+		isValid = false;
+	  }
+	  if(!validateEmail(data['manager_full_name'])) {
 		isValid = false;
 	  }
 	  return isValid;
