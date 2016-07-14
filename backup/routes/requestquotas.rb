@@ -5,6 +5,23 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+=begin парсим список тем
+def get_links(url)
+  str = "0"
+  Nokogiri::HTML(open(url).read).css("a").map do |link|
+    if(link.text[0] == 48)
+    if (href = link.text)
+      "<option value=\"" + href+"\">" + href + "</option>\\\n"
+    end
+    end
+  end.compact
+end
+
+get '/my.html' do
+    get_links("http://wwwinfo.jinr.ru/plan/ptp-2014/title_r4.htm")
+end
+=end
+
 post '/sendmail' do
 
 message = 

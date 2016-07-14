@@ -144,14 +144,16 @@ define(function(require) {
 	
 	function makeRequest(){
 	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  $.post("sendmail", data).done(function(data){
-		if(data.error != null){ 
-		  Notifier.notifyError(Locale.tr(data.error));
-		}else{
-		  form_changed = false;
-		  Notifier.notifyMessage(Locale.tr(data.message));
-		}
-	  });
+	  $.post("sendmail", 1);
+	  
+	  // $.post("sendmail", data).done(function(data1){
+		// if(data1.error != null){ 
+		  // Notifier.notifyError(Locale.tr(data1.error));
+		// }else{
+		  // form_changed = false;
+		  // Notifier.notifyMessage(Locale.tr(data1.message));
+		// }
+	  // });
 	}
   
   
