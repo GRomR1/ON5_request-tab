@@ -26,28 +26,28 @@
         <tr>
           <td class="key_td">{{tr "CPUs"}}</td>
           <td class="value_td">
-            <input class="value_td" id="cpu" type="text" placeholder="{{tr "cores"}}"></input>
+            <input class="registration_form" id="cpu" type="text" placeholder="{{tr "cores"}}"></input>
 		  </td>
           <td></td>
         </tr>
         <tr>
           <td class="key_td">{{tr "RAM"}}</td>
           <td class="value_td">
-            <input class="value_td" id="ram" type="text" placeholder="{{tr "GB"}}"></input>
+            <input class="registration_form" id="ram" type="text" placeholder="{{tr "GB"}}"></input>
 		  </td>
           <td></td>
         </tr>
         <tr>
           <td class="key_td">{{tr "Storage"}}</td>
           <td class="value_td">
-            <input class="value_td" id="hdd" type="text" placeholder="{{tr "GB"}}"></input>
+            <input class="registration_form" id="hdd" type="text" placeholder="{{tr "GB"}}"></input>
 		  </td>
           <td></td>
         </tr>
         <tr>
           <td class="key_td">{{tr "Number of VMs"}}</td>
           <td class="value_td">
-            <input class="value_td" id="vms" type="text" placeholder="{{tr "Number"}}"></input>
+            <input class="registration_form" id="vms" type="text" placeholder="{{tr "Number"}}"></input>
 		  </td>
           <td></td>
         </tr>
@@ -63,11 +63,22 @@
         </tr>
       </tbody>
     </table>
-    <div class="row">
-      <div class="small-centered  large-7 columns">
-        <textarea id="comment" rows="5" style="width:100%;" placeholder="{{tr "Comment (purpose of the requested resources or reason for quotas change)"}}"></textarea>
-      </div>
-    </div>
+	<table class="dataTable" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+	  <tr>
+          <td>
+			<div class="row">
+			  <div class="small-centered  large-7 columns">
+				<textarea class="registration_form"  id="comment" rows="5" style="width:100%;" placeholder="{{tr "Comment (purpose of the requested resources or reason for quotas change)"}}"></textarea>
+			  </div>
+			</div>
+		  </td>
+          <td>
+			<button class="action_button top_button button" href="Request.send" id="resource_tab_b">{{tr "Send"}}</button>
+		  </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div class="row">
