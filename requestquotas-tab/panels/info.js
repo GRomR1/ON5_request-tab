@@ -89,9 +89,14 @@ define(function(require) {
 	context.off("change", "#full_name");
     context.on("change", "#full_name", function() {
       var full_name = $(this).val();
-
-      Sunstone.runAction("Request.change", that.element.ID, full_name);
+      Sunstone.runAction("Request.change", "full_name", full_name);
     });
+	context.off("keyup", "#full_name");
+    context.on("keyup", "#full_name", function() {
+      var full_name = $(this).val();
+      Sunstone.runAction("Request.change", "full_name", full_name);
+    });
+	
 	
     // // Template update
     // // TODO: simplify interface?

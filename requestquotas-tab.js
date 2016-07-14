@@ -133,7 +133,7 @@ define(function(require) {
   
 	function _onChange(a, b) { 
 		form_changed = true;
-		alert("change event:"+a+b);
+		alert("change event:"+a+" " +b);
 	}
 	
 	function _onSend() { 
