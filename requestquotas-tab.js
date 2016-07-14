@@ -113,13 +113,13 @@ define(function(require) {
   
 	function _onChange(key, value) { 
 		form_changed = true;
-		console.log(key+"="+value);
+		//console.log(key+"="+value);
 		data[key]=value;
 	}
 	
 	function _onSend() { 
 	
-		console.log("Send clicked: " + form_changed + "\n" + data);
+		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
 		
 		  // notifyMessage(Locale.tr(data.error));
 	
