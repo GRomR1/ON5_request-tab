@@ -119,12 +119,14 @@ define(function(require) {
 	function _onSend() { 
 	
 		console.log("Send clicked: " + form_changed + "\n" + JSON.stringify(data));
-		var formValided = validateForm()
+		if(!form_changed)
+			return false;
+		var formValided = validateForm();
 		Notifier.notifyMessage(Locale.tr("Send clicked. Success?")+" "+formValided);
 		if(form_changed && formValided){
-		  $("button[href='Request.send']").removeAttr("disabled");  
-		}else{
 		  $("button[href='Request.send']").attr("disabled", "disabled");
+		}else{
+		  $("button[href='Request.send']").removeAttr("disabled");  
 		}
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
@@ -137,6 +139,7 @@ define(function(require) {
 			  // makeRequest();
 			// }
         // }
+		return true;
 	}
 	
 	function makeRequest(){
