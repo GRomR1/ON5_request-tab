@@ -26,6 +26,23 @@ define(function(require) {
   var user_id;
   var user_name;
   var form_changed = false;
+  // Создаем хэш, заполненный значениями
+	var data = { 
+		full_name: '',
+		email: '',
+		manager_full_name: '',
+		manager_email: '',
+		lab: '',
+		topic: '',
+		cpu: '',
+		ram: '',
+		hdd: '',
+		vms: '',
+		os:  '',
+		comment: '',
+		user_id: '',
+		user_name: ''
+	}
 
   _actions["Request.refresh"] = {
     type: "custom",
@@ -77,7 +94,7 @@ define(function(require) {
   };
 
   function _onNextClick() {
-	  // alert("Next event called");
+	  // some action
   }
   
   function _onShow() {
@@ -94,30 +111,17 @@ define(function(require) {
     });
   }
   
-	function _onChange(a, b) { 
+	function _onChange(key, value) { 
 		form_changed = true;
-		console.log(a+"="+b);
+		console.log(key+"="+value);
+		data[key]=value;
 	}
 	
 	function _onSend() { 
-		var data = 
-		{ 
-				full_name: $("#full_name").val(),
-				email: $("#email").val(),
-				manager_full_name: $("#manager_full_name").val(),
-				manager_email: $("#manager_email").val(),
-				lab: $("#lab").val(),
-				topic: $("#topic").val(),
-				cpu: $("#cpu").val(),
-				ram: $("#ram").val(),
-				hdd: $("#hdd").val(),
-				vms: $("#vms").val(),
-				os:  $("#os").val(),
-				comment: $("#comment").val(),
-				user_id: user_id,
-				user_name: user_name
-	  }
-		alert("Send clicked: " + form_changed + "\n" + data);
+	
+		console.log("Send clicked: " + form_changed + "\n" + data);
+		
+		  notifyMessage(Locale.tr(data.error));
 	
         // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
 				// //alert(tr("Your request has been sent"));
@@ -132,22 +136,7 @@ define(function(require) {
 	}
 	
 	function makeRequest(){
-	  $.post("sendmail", { 
-				full_name: $("#full_name").val(),
-				email: $("#email").val(),
-				manager_full_name: $("#manager_full_name").val(),
-				manager_email: $("#manager_email").val(),
-				lab: $("#lab").val(),
-				topic: $("#topic").val(),
-				cpu: $("#cpu").val(),
-				ram: $("#ram").val(),
-				hdd: $("#hdd").val(),
-				vms: $("#vms").val(),
-				os:  $("#os").val(),
-				comment: $("#comment").val(),
-				user_id: user_id,
-				user_name: user_name
-	  }).done(function(data){
+	  $.post("sendmail", data).done(function(data){
 		if(data.error != null){ 
 			alert(Locale.tr(data.error));
 		  //notifyError(Locale.tr(data.error));
@@ -178,16 +167,6 @@ define(function(require) {
 	  return isValid;
 	}
 	
-	function showHideEmailValidityMessage(email_input, email_message){
-	  $(email_input).css({'margin-bottom': '0px'});
-	  if(validateEmail($(email_input).val())){
-		$(email_message).html(tr("Email is valid")).css({'color': 'green'});
-		$(email_input).css({'border' : '1px solid green'});
-	  }else{  
-		$(email_message).html(tr("Not a valid email (only jinr.ru domain emails are accepted)")).css({'color': 'red'});
-		$(email_input).css({'border' : '1px solid #ff0000'});
-	  }
-	}
 
   return Tab;
 
