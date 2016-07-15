@@ -120,7 +120,8 @@ define(function(require) {
 		if(!form_changed)
 			return false;
 		var formValided = validateForm();
-		if(form_changed && formValided){
+		// if(form_changed && formValided){
+		if(1){ // TODO fix it!
 			makeRequest();
 			Notifier.notifyMessage(Locale.tr("Request sended"));
 			$("button[href='Request.send']").attr("disabled", "disabled");
@@ -144,20 +145,20 @@ define(function(require) {
 	
 	function makeRequest(){
 	  
-	  console.log("sendmail?get:"+JSON.stringify({a:1, b:2}));
-	  $.get("sendmail", {a:1, b:2}, function(data){
-			alert("Data Loaded: " + JSON.stringify(data));
-		});
+	  // console.log("sendmail?get:"+JSON.stringify({a:1, b:2}));
+	  // $.get("sendmail", {a:1, b:2}, function(data){
+			// console.log("Data Loaded: " + JSON.stringify(data));
+		// });
 	  
-	  // console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  // $.post("sendmail", data).done(function(data1){
-		// if(data1.error != null){ 
-		  // Notifier.notifyError(Locale.tr(data1.error));
-		// }else{
-		  // form_changed = false;
-		  // Notifier.notifyMessage(Locale.tr(data1.message));
-		// }
-	  // });
+	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
+	  $.post("sendmail", data, function(data1){
+		if(data1.error != null){ 
+		  Notifier.notifyError(Locale.tr(data1.error));
+		}else{
+		  form_changed = false;
+		  Notifier.notifyMessage(Locale.tr(data1.message));
+		}
+	  });
 	}
   
   
