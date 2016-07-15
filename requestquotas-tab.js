@@ -139,12 +139,12 @@ define(function(require) {
 			// console.log("Data Loaded: " + JSON.stringify(data));
 		// });
 	  
-	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
+	  // console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
 	  // $.post("sendmail", {a:1, b:2}, function(data, stat){
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
-		var jqxhr = $.post("sendmail", data) , function(data1, stat){
+		var jqxhr = $.post("sendmail", data , function(data1, stat){
 				if(data1.error != null){ 
 				  console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
 				  Notifier.notifyError(Locale.tr(data1.error));
