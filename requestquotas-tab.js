@@ -26,7 +26,7 @@ define(function(require) {
   var form_changed = false;
 	var data = { 
 		full_name: '',
-		email: 'gainanov@jinr.ru',
+		email: '',
 		manager_full_name: '',
 		manager_email: '',
 		lab: Locale.tr("VBLHEP"),
