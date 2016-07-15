@@ -12,29 +12,8 @@ end
 
 post '/sendmail' do
   logger.info("[sendmail]: included")
-  message = 
-"From: "+ params[:full_name] + " <" + params[:email] + ">
-To: " + params[:email] + "
-Subject: Запрос ресурсов
-Content-Type: text/plain; charset=UTF-8;
+  message = "aaaaaaa"
 
-user_id: " + params[:user_id] + "
-user_name: " +params[:user_name] + "
-ФИО: " + params[:full_name] + "
-E-mail: " + params[:email] + "
-ФИО руководителя: " + params[:manager_full_name] + "
-E-mail руководителя: " + params[:manager_email] + "
-Лаборатория: " + params[:lab] + "
-Тема: " + params[:topic] + "
-
-Запрашиваемые ресурсы:
-
-CPU: " + params[:cpu] + "
-ОЗУ: " + params[:ram] + "
-Дисковое пространство: " + params[:hdd] + "
-Количество ВМ: " + params[:vms] + " 
-Тип ОС: " + params[:os] + "
-Комментарий: " + params[:comment]
 
   logger.info("[Message]: \n" + message)
   begin
