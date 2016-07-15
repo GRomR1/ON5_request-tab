@@ -26,7 +26,7 @@ define(function(require) {
   var form_changed = false;
 	var data = { 
 		full_name: '',
-		email: 'temp@jinr.ru',
+		email: 'gainanov@jinr.ru',
 		manager_full_name: '',
 		manager_email: '',
 		lab: Locale.tr("VBLHEP"),
@@ -146,11 +146,11 @@ define(function(require) {
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
 		var jqxhr = $.post("sendmail", data, function(data1, stat){
 				if(data1.error != null){ 
-					console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
+				  console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
 				  Notifier.notifyError(Locale.tr(data1.error));
 				}else{
 				  form_changed = false;
-					console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
+				  console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
 			  });
