@@ -151,13 +151,13 @@ define(function(require) {
 		// });
 	  
 	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  $.post("sendmail", {a:1, b:2}, function(data, stat){
-			console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
-		});
-		// var jqxhr = $.post("sendmail", {a:1, b:2})
-			// .success(function() { alert("Успешное выполнение"); })
-			// .error(function() { alert("Ошибка выполнения"); })
-			// .complete(function() { alert("Завершение выполнения"); });
+	  // $.post("sendmail", {a:1, b:2}, function(data, stat){
+			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
+		// });
+		var jqxhr = $.post("sendmail", {email:temp@jinr.ru, b:2})
+			.success(function() { alert("Успешное выполнение"); })
+			.error(function() { alert("Ошибка выполнения"); })
+			.complete(function() { alert("Завершение выполнения"); });
 			
 	  // $.post("sendmail", data, function(data1){
 		// if(data1.error != null){ 

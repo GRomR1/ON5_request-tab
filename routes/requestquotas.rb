@@ -6,25 +6,19 @@ require 'uri'
 require 'json'
 
 get '/sendmail' do
-  logger.info("[SendMail get]: " + params[:a] + " " + params[:b])
-  {params[:a] => "Your message has been sent successfuly"}.to_json
+  
+  logger.info("[sendmail]: included")
+  message = params[:full_name] + " " + params[:email] + " " + params[:email] + " " + params[:user_id] 
+  + " " + params[:user_name] + " " + params[:full_name] + " " + params[:email] + " " + params[:manager_full_name]
+  + " " + params[:manager_email] + " " + params[:lab] + " " + params[:topic] + " " + params[:cpu] + " " + params[:ram] + " " 
+  + params[:hdd] + " " + params[:vms] + "  " + params[:os] + " " + params[:comment]
+  logger.info("[Message]: \n" + message)
 end
 
 post '/sendmail' do
   logger.info("[sendmail]: included")
-  message = params[:full_name] + " " + params[:email] + " " + params[:email] + " " + params[:user_id] + " " + params[:user_name] + " " + params[:full_name] + "
- " + params[:email] + "
- " + params[:manager_full_name] + "
- " + params[:manager_email] + "
- " + params[:lab] + "
- " + params[:topic] + "
 
- " + params[:cpu] + "
- " + params[:ram] + "
- " + params[:hdd] + "
- " + params[:vms] + " 
- " + params[:os] + "
- " + params[:comment]
+  message = "AAAAAAAAAAAAAAA!"
 
 
   logger.info("[Message]: \n" + message)
