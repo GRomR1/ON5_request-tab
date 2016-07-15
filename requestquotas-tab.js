@@ -154,15 +154,15 @@ define(function(require) {
 	  // $.post("sendmail", {a:1, b:2}, function(data, stat){
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
-		// var jqxhr = $.post("sendmail", {email:"temp@jinr.ru", b:2})
-			// .success(function() { alert("Успешное выполнение"); })
-			// .error(function() { alert("Ошибка выполнения"); })
-			// .complete(function() { alert("Завершение выполнения"); });
-			
-		var jqxhr = $.post("sendmail", data)
+		var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
 			.success(function() { alert("Успешное выполнение"); })
 			.error(function() { alert("Ошибка выполнения"); })
 			.complete(function() { alert("Завершение выполнения"); });
+			
+		// var jqxhr = $.post("sendmail", data)
+			// .success(function() { alert("Успешное выполнение"); })
+			// .error(function() { alert("Ошибка выполнения"); })
+			// .complete(function() { alert("Завершение выполнения"); });
 			
 	  // $.post("sendmail", data, function(data1){
 		// if(data1.error != null){ 
