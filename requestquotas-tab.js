@@ -30,7 +30,7 @@ define(function(require) {
 		manager_full_name: '',
 		manager_email: '',
 		lab: Locale.tr("VBLHEP"),
-		lab: Locale.tr("No topic"),
+		topic: Locale.tr("No topic"),
 		cpu: '',
 		ram: '',
 		hdd: '',
