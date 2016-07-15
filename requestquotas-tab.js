@@ -154,8 +154,8 @@ define(function(require) {
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
 			  });
-			 .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
-			 .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));})
+			 // .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
+			 // .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));})
 			// .complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
