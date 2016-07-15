@@ -7,7 +7,8 @@ require 'json'
 
 get '/sendmail' do  
   logger.info("[sendmail]: included")
-  message = params[:full_name] + " " + params[:email] + " " + params[:user_id] + " " + params[:user_name] + " " + params[:full_name] + " " + params[:manager_full_name] + " " + params[:manager_email] + " " + params[:lab] + " " + params[:topic] 
+  message = params[:full_name] + " " + params[:email] + " " + params[:user_id] + " " + params[:user_name] + " " + params[:full_name] + " " + params[:manager_full_name] 
+
     
   logger.info("[Message]: \n" + message)
   
