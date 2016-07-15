@@ -56,6 +56,6 @@ CPU: " + params[:cpu] + "
     content_type :json
     {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
   end
-  
-  logger.info("[sendmail]: end")
+#  
+#  logger.info("[sendmail]: end")
 end
