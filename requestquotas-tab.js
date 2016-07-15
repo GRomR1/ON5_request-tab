@@ -61,10 +61,6 @@ define(function(require) {
     call: _onChange
   };
   
-  // var _dialogs = [
-    // require('tabs/users-tab/dialogs/password')
-  // ];
-
   var _panels = [
     require('tabs/requestquotas-tab/panels/info'),
     require('tabs/requestquotas-tab/panels/general-info'),
@@ -85,8 +81,7 @@ define(function(require) {
     content: '<span class="fa-stack fa-2x" style="color: #dfdfdf">' +
       '<i class="fa fa-cloud fa-stack-2x"></i>' +
       '<i class="fa  fa-spinner fa-spin fa-stack-1x fa-inverse"></i>' +
-    '</span>',
-    // dialogs: _dialogs,
+      '</span>',
     panels: _panels,
   };
 
@@ -120,30 +115,17 @@ define(function(require) {
 		if(!form_changed)
 			return false;
 		var formValided = validateForm();
-		// if(form_changed && formValided){
-		if(1){ // TODO fix it!
+		if(form_changed && formValided){
+		// if(1){ // 
 			makeRequest();
-			//Notifier.notifyMessage(Locale.tr("Request sended"));
 			$("button[href='Request.send']").attr("disabled", "disabled");
 		}else{
-			//Notifier.notifyError(Locale.tr("Your data doesn't valid"));
 			$("button[href='Request.send']").removeAttr("disabled");  
 		}
 		return true;
 	}
 	
 	function makeRequest(){
-	  
-	  // console.log("sendmail?get:"+JSON.stringify({a:1, b:2}));
-	  // $.get("sendmail", {a:1, b:2}, function(data){
-			// console.log("Data Loaded: " + JSON.stringify(data));
-		// });
-	  
-	  // console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  // $.post("sendmail", {a:1, b:2}, function(data, stat){
-			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
-		// });
-		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
 		var jqxhr = $.post("sendmail", data , function(data1, stat){
 				if(data1.error != null){ 
 				  console.log("Error: " + JSON.stringify(data1.error) + " " +stat);
@@ -154,23 +136,11 @@ define(function(require) {
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
 			  });
-			 // .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
-			 // .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));});
-			// .complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
-			// .success(function() { alert("Успешное выполнение"); })
-			// .error(function() { alert("Ошибка выполнения"); })
-			// .complete(function() { alert("Завершение выполнения"); });
-			
-	  // $.post("sendmail", data, function(data1){
-		// if(data1.error != null){ 
-		  // Notifier.notifyError(Locale.tr(data1.error));
-		// }else{
-		  // form_changed = false;
-		  // Notifier.notifyMessage(Locale.tr(data1.message));
-		// }
-	  // });
+			 // .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
+			 // .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));});
+			 // .complete(function() { console.log("Завершение выполнения"); });
 	}
   
   
