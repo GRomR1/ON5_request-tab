@@ -13,6 +13,9 @@ get '/sendmail' do
   + " " + params[:manager_email] + " " + params[:lab] + " " + params[:topic] + " " + params[:cpu] + " " + params[:ram] + " " 
   + params[:hdd] + " " + params[:vms] + "  " + params[:os] + " " + params[:comment]
   logger.info("[Message]: \n" + message)
+  
+  content_type :json
+  {:message => "Your message has been sent successfuly"}.to_json
 end
 
 post '/sendmail' do
