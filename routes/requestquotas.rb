@@ -14,9 +14,6 @@ get '/sendmail' do
 end
 
 post '/sendmail' do
-  logger.info("[sendmail]: begin")
-
-	
   message = 
 "From: "+ params[:full_name] + " <" + params[:email] + ">
 To: " + params[:email] + "
@@ -41,9 +38,8 @@ CPU: " + params[:cpu] + "
 Тип ОС: " + params[:os] + "
 Комментарий: " + params[:comment]
 
-#  logger.info("[Message]: \n" + message)
   begin
-#    logger.info("\n begin")
+    logger.info("\n begin")
     Net::SMTP.start('localhost') do |smtp|
       smtp.send_message message, params[:email], ['gainanov@jinr.ru']
     logger.info("Your message has been sent successfuly")
@@ -56,6 +52,4 @@ CPU: " + params[:cpu] + "
     content_type :json
     {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
   end
-#  
-#  logger.info("[sendmail]: end")
 end
