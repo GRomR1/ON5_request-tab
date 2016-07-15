@@ -154,7 +154,8 @@ define(function(require) {
 	  // $.post("sendmail", {a:1, b:2}, function(data, stat){
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
-		var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
+		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
+		var jqxhr = $.get("sendmail", data)
 			.success(function() { alert("Успешное выполнение"); })
 			.error(function() { alert("Ошибка выполнения"); })
 			.complete(function() { alert("Завершение выполнения"); });
