@@ -26,7 +26,7 @@ define(function(require) {
   var form_changed = false;
 	var data = { 
 		full_name: '',
-		email: '',
+		email: 'temp@jinr.ru',
 		manager_full_name: '',
 		manager_email: '',
 		lab: Locale.tr("VBLHEP"),
@@ -155,17 +155,19 @@ define(function(require) {
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
-		var jqxhr = $.post("sendmail", data, function(data1){
+		var jqxhr = $.post("sendmail", data, function(data1, stat){
 				if(data1.error != null){ 
+					console.log("Data Loaded: " + JSON.stringify(data1.error) + " " +stat);
 				  Notifier.notifyError(Locale.tr(data1.error));
 				}else{
 				  form_changed = false;
+					console.log("Data Loaded: " + JSON.stringify(data1.message) + " " +stat);
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
-			  })
-			.success(function() { console.log("Успешное выполнение"); })
-			.error(function() { console.log("Ошибка выполнения"); })
-			.complete(function() { console.log("Завершение выполнения"); });
+			  });
+			// .success(function() { console.log("Успешное выполнение"); })
+			// .error(function() { console.log("Ошибка выполнения"); })
+			// .complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
 			// .success(function() { alert("Успешное выполнение"); })
