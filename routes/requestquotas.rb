@@ -6,9 +6,8 @@ require 'uri'
 require 'json'
 
 get '/sendmail' do
-	"Hello, Sinatra!" 
-
-    logger.info("[SendMail get]: " + params[:a] + " " + params[:b])
+  logger.info("[SendMail get]: " + params[:a] + " " + params[:b])
+  {params[:a] => "Your message has been sent successfuly"}.to_json
 end
 
 post '/sendmail' do
@@ -37,6 +36,7 @@ CPU: " + params[:cpu] + "
 Тип ОС: " + params[:os] + "
 Комментарий: " + params[:comment]
 
+  logger.info("[Message]: \n" + message)
   begin
     Net::SMTP.start('localhost') do |smtp|
       smtp.send_message message, params[:email], 
