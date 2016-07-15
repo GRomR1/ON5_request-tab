@@ -7,7 +7,8 @@ require 'json'
 
 get '/sendmail' do
 	"Hello, Sinatra!" 
-	params[:a]
+
+    logger.info("[SendMail get]: " + params[:a] + " " + params[:b])
 end
 
 post '/sendmail' do
