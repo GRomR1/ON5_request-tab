@@ -155,10 +155,17 @@ define(function(require) {
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
-		var jqxhr = $.get("sendmail", data)
-			.success(function() { alert("Успешное выполнение"); })
-			.error(function() { alert("Ошибка выполнения"); })
-			.complete(function() { alert("Завершение выполнения"); });
+		var jqxhr = $.post("sendmail", data, function(data1){
+				if(data1.error != null){ 
+				  Notifier.notifyError(Locale.tr(data1.error));
+				}else{
+				  form_changed = false;
+				  Notifier.notifyMessage(Locale.tr(data1.message));
+				}
+			  })
+			.success(function() { console.log("Успешное выполнение"); })
+			.error(function() { console.log("Ошибка выполнения"); })
+			.complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
 			// .success(function() { alert("Успешное выполнение"); })
