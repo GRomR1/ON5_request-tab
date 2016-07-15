@@ -16,22 +16,21 @@ get '/sendmail' do
 end
 
 post '/sendmail' do
-  logger.info("[sendmail]: included")
+	logger.info("[sendmail]: included")
 
-  message = "AAAAAAAAAAAAAAA!"
+	from = 'ot_kogo@example.com'
+	to = 'gainanov@jinr.ru'
+	theme = 'Вот это тема!'
+	text="Привет медвед"
+	message=""
+	message<<"From: ot kogo <#{from}>\n"
+	message<<"To: #{to}\n"
+	message<<"Subject: #{theme}\n"
+	message<<text
 
+	Net::SMTP.new('localhost', 25).start('example.com') do |smtp|
+		smtp.send_message message, from, to
+	end
 
-  logger.info("[Message]: \n" + message)
-  begin
-    Net::SMTP.start('localhost') do |smtp|
-      smtp.send_message message, params[:email], 
-					"gainanov@jinr.ru"
-    content_type :json
-    {:message => "Your message has been sent successfuly"}.to_json
-  end
-  rescue Exception => e  
-    logger.error("[SendMail ERROR]: " + e)
-    content_type :json
-    {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
-  end
+	logger.info("[Message]: \n" + message)
 end
