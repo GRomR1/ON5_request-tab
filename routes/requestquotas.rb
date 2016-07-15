@@ -44,7 +44,7 @@ CPU: " + params[:cpu] + "
 #  logger.info("[Message]: \n" + message)
   begin
 #    logger.info("\n begin")
-    Net::SMTP.start('192.168.33.157') do |smtp|
+    Net::SMTP.start('jinr.ru') do |smtp|
       smtp.send_message message, params[:email], ['gainanov@jinr.ru']
     logger.info("Your message has been sent successfuly")
     content_type :json
