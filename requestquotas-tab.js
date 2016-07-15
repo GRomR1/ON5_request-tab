@@ -146,7 +146,7 @@ define(function(require) {
 	  
 	  console.log("sendmail?get:"+JSON.stringify({a:1, b:2}));
 	  $.get("sendmail", {a:1, b:2}, function(data){
-			alert("Data Loaded: " + data);
+			alert("Data Loaded: " + JSON.stringify(data));
 		});
 	  
 	  // console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
