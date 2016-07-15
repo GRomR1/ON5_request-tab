@@ -45,14 +45,17 @@ CPU: " + params[:cpu] + "
 
   logger.info("[Message]: \n" + message)
   begin
+    logger.info("\n begin")
     Net::SMTP.start('localhost') do |smtp|
       smtp.send_message message, params[:email], 
 					"gainanov@jinr.ru"
+    logger.info("Your message has been sent successfuly")
     content_type :json
     {:message => "Your message has been sent successfuly"}.to_json
   end
   rescue Exception => e  
     logger.error("[SendMail ERROR]: " + e)
+    logger.info("Something went wrong, please contact us on cloud@jinr.ru")
     content_type :json
     {:error => "Something went wrong, please contact us on cloud@jinr.ru"}.to_json
   end
