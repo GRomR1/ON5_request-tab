@@ -11,8 +11,8 @@ get '/sendmail' do
 end
 
 post '/sendmail' do
-
-message = 
+  logger.info("[sendmail]: included")
+  message = 
 "From: "+ params[:full_name] + " <" + params[:email] + ">
 To: " + params[:email] + "
 Subject: Запрос ресурсов
