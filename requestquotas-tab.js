@@ -146,11 +146,11 @@ define(function(require) {
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
 		var jqxhr = $.post("sendmail", data , function(data1, stat){
 				if(data1.error != null){ 
-				  console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
+				  console.log("Error: " + JSON.stringify(data1.error) + " " +stat);
 				  Notifier.notifyError(Locale.tr(data1.error));
 				}else{
 				  form_changed = false;
-				  console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
+				  console.log("Success: " + JSON.stringify(data1.message) + " " +stat);
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
 			  });
