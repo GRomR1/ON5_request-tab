@@ -159,7 +159,7 @@ define(function(require) {
 			// .error(function() { alert("Ошибка выполнения"); })
 			// .complete(function() { alert("Завершение выполнения"); });
 			
-		var jqxhr = $.get("sendmail", data)
+		var jqxhr = $.post("sendmail", data)
 			.success(function() { alert("Успешное выполнение"); })
 			.error(function() { alert("Ошибка выполнения"); })
 			.complete(function() { alert("Завершение выполнения"); });
