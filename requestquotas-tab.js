@@ -123,23 +123,12 @@ define(function(require) {
 		// if(form_changed && formValided){
 		if(1){ // TODO fix it!
 			makeRequest();
-			Notifier.notifyMessage(Locale.tr("Request sended"));
+			//Notifier.notifyMessage(Locale.tr("Request sended"));
 			$("button[href='Request.send']").attr("disabled", "disabled");
 		}else{
-			Notifier.notifyError(Locale.tr("Your data doesn't valid"));
+			//Notifier.notifyError(Locale.tr("Your data doesn't valid"));
 			$("button[href='Request.send']").removeAttr("disabled");  
 		}
-	
-        // if( validateEmail($("#email").val()) && validateEmail($("#manager_email").val()) ) {
-				// //alert(tr("Your request has been sent"));
-			// if(!form_changed){
-			  // if(confirm( Locale.tr("You have already made the request. Do you want to repeat it?") )){
-				// makeRequest();
-			  // }
-			// }else{
-			  // makeRequest();
-			// }
-        // }
 		return true;
 	}
 	
@@ -157,16 +146,16 @@ define(function(require) {
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
 		var jqxhr = $.post("sendmail", data, function(data1, stat){
 				if(data1.error != null){ 
-					console.log("Data Loaded: " + JSON.stringify(data1.error) + " " +stat);
+					console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
 				  Notifier.notifyError(Locale.tr(data1.error));
 				}else{
 				  form_changed = false;
-					console.log("Data Loaded: " + JSON.stringify(data1.message) + " " +stat);
+					console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
 				  Notifier.notifyMessage(Locale.tr(data1.message));
 				}
 			  });
-			// .success(function() { console.log("Успешное выполнение"); })
-			// .error(function() { console.log("Ошибка выполнения"); })
+			 .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
+			 .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));})
 			// .complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
