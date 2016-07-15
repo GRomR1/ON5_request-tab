@@ -143,9 +143,13 @@ define(function(require) {
 	}
 	
 	function makeRequest(){
-	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  $.post("sendmail", 1);
 	  
+	  console.log("sendmail?get:"+{a:1, b:2});
+	  $.get("sendmail", {a:1, b:2}, function(data){
+			alert("Data Loaded: " + data);
+		});
+	  
+	  // console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
 	  // $.post("sendmail", data).done(function(data1){
 		// if(data1.error != null){ 
 		  // Notifier.notifyError(Locale.tr(data1.error));
