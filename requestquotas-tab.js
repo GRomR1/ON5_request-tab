@@ -151,14 +151,17 @@ define(function(require) {
 		// });
 	  
 	  console.log("sendmail?=POST: " + "\n" + JSON.stringify(data));
-	  $.post("sendmail", data, function(data1){
-		if(data1.error != null){ 
-		  Notifier.notifyError(Locale.tr(data1.error));
-		}else{
-		  form_changed = false;
-		  Notifier.notifyMessage(Locale.tr(data1.message));
-		}
-	  });
+	  $.post("sendmail", {a:1, b:2}, function(data){
+			console.log("Data Loaded: " + JSON.stringify(data));
+		});
+	  // $.post("sendmail", data, function(data1){
+		// if(data1.error != null){ 
+		  // Notifier.notifyError(Locale.tr(data1.error));
+		// }else{
+		  // form_changed = false;
+		  // Notifier.notifyMessage(Locale.tr(data1.message));
+		// }
+	  // });
 	}
   
   
