@@ -144,18 +144,19 @@ define(function(require) {
 			// console.log("Data Loaded: " + JSON.stringify(data) + " " +stat);
 		// });
 		// var jqxhr = $.get("sendmail", {email:"temp@jinr.ru", comment:"WTF?"})
-		var jqxhr = $.post("sendmail", data, function(data1, stat){
-				if(data1.error != null){ 
-				  console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
-				  Notifier.notifyError(Locale.tr(data1.error));
-				}else{
-				  form_changed = false;
-				  console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
-				  Notifier.notifyMessage(Locale.tr(data1.message));
-				}
-			  });
-			 // .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
-			 // .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));})
+		var jqxhr = $.post("sendmail", data)
+		// , function(data1, stat){
+				// if(data1.error != null){ 
+				  // console.log("Error: " + JSON.stringify(data1.message) + " " +stat);
+				  // Notifier.notifyError(Locale.tr(data1.error));
+				// }else{
+				  // form_changed = false;
+				  // console.log("Success: " + JSON.stringify(data1.error) + " " +stat);
+				  // Notifier.notifyMessage(Locale.tr(data1.message));
+				// }
+			  // });
+			 .success(function() { console.log("Успешное выполнение"); Notifier.notifyMessage(Locale.tr("Success post")); })
+			 .error(function() { console.log("Ошибка выполнения"); Notifier.notifyError(Locale.tr("Error post"));});
 			// .complete(function() { console.log("Завершение выполнения"); });
 			
 		// var jqxhr = $.post("sendmail", data)
