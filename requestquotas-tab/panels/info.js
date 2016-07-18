@@ -53,7 +53,7 @@ define(function(require) {
     this.icon = "fa-info-circle";
 
     this.element = info[XML_ROOT];
-	this.element.TPLAN = [];
+	this.element.TPLAN = '';
 
     return this;
   }
