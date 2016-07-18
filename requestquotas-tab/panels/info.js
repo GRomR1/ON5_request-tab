@@ -88,7 +88,11 @@ define(function(require) {
 	
   function _html() {
 	
-    var a = Sunstone.runAction("Request.get_topical_plan");
+    // var a = Sunstone.runAction("Request.get_topical_plan");
+			$.post("get_topical_plan", function(data1, stat){
+				  console.log("Success: " + JSON.stringify(data1.topics) + " " +stat);
+				  // Notifier.notifyMessage(Locale.tr(data1.topics));
+				});
 	console.log("a="+a);
 	
     return TemplateInfo({
