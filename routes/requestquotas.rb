@@ -34,7 +34,7 @@ end
 #get_links("http://wwwinfo.jinr.ru/plan/ptp-2014/title_r4.htm") #2014
 #get_links("http://wwwinfo.jinr.ru/plan/ptp-2016/title_r6.htm") #2016
 
-get '/get_topical_plan' do
+post '/get_topical_plan' do
 	date = `date +%Y`.chomp
 	t = get_links("http://wwwinfo.jinr.ru/plan/ptp-"+date+"/title_r"+date[3]+".htm") #current date
 	
