@@ -87,6 +87,19 @@ define(function(require) {
 	
   function _html() {
 	
+    return TemplateInfo({
+      'element': this.element,
+      'sunstone_template': this.element.TEMPLATE.SUNSTONE||{},
+    });
+  }
+
+  function _setup(context) {
+    var that = this;
+	// context.on("click", "#resource_tab_a", function() {
+		// alert("buttonA clicked");
+		// $("#resources_tab-label").click();
+	// });
+
     // var a = Sunstone.runAction("Request.get_topical_plan");
 	var tplan = [];
 			$.post("get_topical_plan", function(data1, stat){
@@ -103,19 +116,7 @@ define(function(require) {
 					<option value="'+Locale.tr("No topic AAA")+'">'+Locale.tr("No topic AAA")+'</option>'
 					+ topic_html + '</select>');
 					
-    return TemplateInfo({
-      'element': this.element,
-      'sunstone_template': this.element.TEMPLATE.SUNSTONE||{},
-    });
-  }
-
-  function _setup(context) {
-    var that = this;
-	// context.on("click", "#resource_tab_a", function() {
-		// alert("buttonA clicked");
-		// $("#resources_tab-label").click();
-	// });
-
+					
 	context.off("click", "#resource_tab_b");
 	context.on("click", "#resource_tab_b", function() {
 		// alert("buttonB clicked");
