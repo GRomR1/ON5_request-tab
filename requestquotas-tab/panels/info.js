@@ -105,17 +105,18 @@ define(function(require) {
 	$.post("get_topical_plan", function(data1, stat){
 		console.log("Success: " + JSON.stringify(data1.topics) + "\n" +stat);
 		tplan=data1.topics;
+		var topic_html = '';
+		tplan.forEach(function(item){
+			topic_html+= '<option value="'+item+'">'+item+'</option>\\n';
+		});
+		topic_html+='<option value="'+'AAA'+'">'+'AAA'+'</option>\\n';
+		$("#topic").html('<select name="topic_number" id="topic" >\
+						<option value="'+Locale.tr("No topic AAA")+'">'+Locale.tr("No topic AAA")+'</option>'
+						+ topic_html + '</select>');
 		// Notifier.notifyMessage(Locale.tr(data1.topics));
 	});
 	console.log("AAA: " + tplan + "\n");
-	var topic_html = '';
-	tplan.forEach(function(item){
-		topic_html+= '<option value="'+item+'">'+item+'</option>\\n';
-	});
-	topic_html+='<option value="'+'AAA'+'">'+'AAA'+'</option>\\n';
-	$("#topic").html('<select name="topic_number" id="topic" >\
-					<option value="'+Locale.tr("No topic AAA")+'">'+Locale.tr("No topic AAA")+'</option>'
-					+ topic_html + '</select>');
+
 					
 					
 	context.off("click", "#resource_tab_b");
