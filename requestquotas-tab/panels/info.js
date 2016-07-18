@@ -42,6 +42,7 @@ define(function(require) {
   var RESOURCE = "User";
   var XML_ROOT = "USER";
   var PASSWORD_DIALOG_ID = require('tabs/users-tab/dialogs/password/dialogId');
+  
 
   /*
     CONSTRUCTOR
@@ -52,6 +53,7 @@ define(function(require) {
     this.icon = "fa-info-circle";
 
     this.element = info[XML_ROOT];
+	this.element.TPLAN = [];
 
     return this;
   }
@@ -85,6 +87,10 @@ define(function(require) {
 	}
 	
   function _html() {
+	
+    var a = Sunstone.runAction("Request.get_topical_plan");
+	console.log("a="+a);
+	
     return TemplateInfo({
       'element': this.element,
       'sunstone_template': this.element.TEMPLATE.SUNSTONE||{}

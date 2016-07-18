@@ -16,6 +16,32 @@ get '/sendmail' do
 end
 =end
 
+def get_links(url)
+  topics = []
+  Nokogiri::HTML(open(url).read).css("a").map do |link|
+	if(link.text[0] == '0')
+		if (href = link.text)
+			topics.push href
+		end
+    end
+  end
+  return topics
+  #topics.each do |t|
+	#puts t
+  #end
+end
+
+#get_links("http://wwwinfo.jinr.ru/plan/ptp-2014/title_r4.htm") #2014
+#get_links("http://wwwinfo.jinr.ru/plan/ptp-2016/title_r6.htm") #2016
+
+get '/get_topical_plan' do
+	date = `date +%Y`.chomp
+	t = get_links("http://wwwinfo.jinr.ru/plan/ptp-"+date+"/title_r"+date[3]+".htm") #current date
+	
+    content_type :json
+    {:topics => t}.to_json
+end
+
 post '/sendmail' do
   message = 
 "From: "+ params[:full_name] + " <" + params[:email] + ">

@@ -61,9 +61,14 @@ define(function(require) {
     call: _onChange
   };
   
+  _actions["Request.get_topical_plan"] = {
+    type: "custom",
+    call: _onGetPlan
+  };
+  
+  
   var _panels = [
     require('tabs/requestquotas-tab/panels/info'),
-    require('tabs/requestquotas-tab/panels/general-info'),
     require('tabs/requestquotas-tab/panels/resources')
   ];
 
@@ -103,6 +108,13 @@ define(function(require) {
     });
   }
   
+	function _onGetPlan() {
+		$.post("sendmail", function(data1, stat){
+				  console.log("Success: " + JSON.stringify(data1.topics) + " " +stat);
+				  // Notifier.notifyMessage(Locale.tr(data1.topics));
+				});
+	}
+	
 	function _onChange(key, value) { 
 		//console.log(key+"="+value);
 		$("button[href='Request.send']").removeAttr("disabled");  

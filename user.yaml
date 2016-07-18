@@ -758,9 +758,9 @@ tabs:
     requestquotas-tab:
         panel_tabs:
             user_info_tab: true
-            #general_info_tab: true
             resources_tab: true
         actions:
             Request.next_click: true
             Request.send: true
             Request.change: true
+            Request.get_topical_plan: true
