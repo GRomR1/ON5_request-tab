@@ -100,7 +100,7 @@ define(function(require) {
 	});
 	topic_html='<option value="'+'AAA'+'">'+'AAA'+'</option>\\n';
 	$("#topic").html('<select name="topic_number" id="topic" >\
-					<option value="'+Locale.tr("No topic")+'">'+Locale.tr("No topic")+'</option>'
+					<option value="'+Locale.tr("No topic AAA")+'">'+Locale.tr("No topic AAA")+'</option>'
 					+ topic_html + '</select>');
 					
     return TemplateInfo({
