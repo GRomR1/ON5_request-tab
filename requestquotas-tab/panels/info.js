@@ -100,20 +100,16 @@ define(function(require) {
 		// $("#resources_tab-label").click();
 	// });
 
-    // var a = Sunstone.runAction("Request.get_topical_plan");
-	
+    // Sunstone.runAction("Request.get_topical_plan");
 	$.post("get_topical_plan", function(data1, stat){
-		console.log("Success: " + JSON.stringify(data1.topics) + "\n" +stat);
-		tplan=data1.topics;
+		// console.log("Success: " + JSON.stringify(data1.topics) + "\n" +stat);
 		var topic_html = '';
 		data1.topics.forEach(function(item){
-			topic_html+= '<option value="'+item+'">'+item+'</option>\\n';
+			topic_html+= '<option value="'+item+'">'+item+'</option>\n';
 		});
-		topic_html+='<option value="'+'AAA'+'">'+'AAA'+'</option>\\n';
 		$("#topic").html('<select name="topic_number" id="topic" >\
-						<option value="'+Locale.tr("No topic AAA")+'">'+Locale.tr("No topic AAA")+'</option>'
+						<option value="'+Locale.tr("No topic")+'">'+Locale.tr("No topic")+'</option>'
 						+ topic_html + '</select>');
-		// Notifier.notifyMessage(Locale.tr(data1.topics));
 	});
 
 					

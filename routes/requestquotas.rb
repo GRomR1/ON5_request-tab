@@ -32,6 +32,7 @@ def get_links(url)
 end
 
 #get_links("http://wwwinfo.jinr.ru/plan/ptp-2014/title_r4.htm") #2014
+#get_links("http://wwwinfo.jinr.ru/plan/ptp-2015/title_r5.htm") #2015
 #get_links("http://wwwinfo.jinr.ru/plan/ptp-2016/title_r6.htm") #2016
 
 post '/get_topical_plan' do
@@ -69,9 +70,8 @@ CPU: " + params[:cpu] + "
 
   begin
     # logger.info("\n begin")
-	# TODO fix it: 'gainanov@jinr.ru' replace to 'cloud@jinr.ru'
     Net::SMTP.start('localhost') do |smtp|
-      smtp.send_message message, params[:email], ['gainanov@jinr.ru'] 
+      smtp.send_message message, params[:email], ['cloud@jinr.ru'] 
     # logger.info("Your message has been sent successfuly")
     content_type :json
     {:message => "Your message has been sent successfuly"}.to_json
