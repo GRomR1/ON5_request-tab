@@ -110,7 +110,7 @@ define(function(require) {
   
 	function _onGetPlan() {
 		$.post("get_topical_plan", function(data1, stat){
-				  console.log("Success: " + JSON.stringify(data1.topics) + " " +stat);
+				  // console.log("Success: " + JSON.stringify(data1.topics) + " " +stat);
 				  // Notifier.notifyMessage(Locale.tr(data1.topics));
 				});
 	}
