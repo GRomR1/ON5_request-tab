@@ -102,11 +102,12 @@ define(function(require) {
 
     // var a = Sunstone.runAction("Request.get_topical_plan");
 	var tplan = [];
-			$.post("get_topical_plan", function(data1, stat){
-				  console.log("Success: " + JSON.stringify(data1.topics) + " " +stat);
-				  tplan=data1.topics;
-				  // Notifier.notifyMessage(Locale.tr(data1.topics));
-				});
+	$.post("get_topical_plan", function(data1, stat){
+		console.log("Success: " + JSON.stringify(data1.topics) + "\n" +stat);
+		tplan=data1.topics;
+		// Notifier.notifyMessage(Locale.tr(data1.topics));
+	});
+	console.log("AAA: " + tplan + "\n");
 	var topic_html = '';
 	tplan.forEach(function(item){
 		topic_html+= '<option value="'+item+'">'+item+'</option>\\n';
