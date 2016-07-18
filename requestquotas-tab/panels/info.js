@@ -95,12 +95,13 @@ define(function(require) {
 				  tplan=data1.topics;
 				  // Notifier.notifyMessage(Locale.tr(data1.topics));
 				});
+	this.element.TPAN=tplan;
 	// console.log("a="+a);
 	
     return TemplateInfo({
       'element': this.element,
       'sunstone_template': this.element.TEMPLATE.SUNSTONE||{},
-	  'topical_plan': tplan
+	  // 'topical_plan': tplan
     });
   }
 
