@@ -53,7 +53,6 @@ define(function(require) {
     this.icon = "fa-info-circle";
 
     this.element = info[XML_ROOT];
-	this.element.TPLAN = '';
 
     return this;
   }
@@ -95,13 +94,18 @@ define(function(require) {
 				  tplan=data1.topics;
 				  // Notifier.notifyMessage(Locale.tr(data1.topics));
 				});
-	this.element.TPAN=tplan;
-	// console.log("a="+a);
-	
+	var topic_html = '';
+	tplan.forEach(function(item){
+		topic_html+= '<option value="'+item+'">'+item+'</option>\\n';
+	});
+	topic_html='<option value="'+'AAA'+'">'+'AAA'+'</option>\\n';
+	$("#topic").html('<select name="topic_number" id="topic" >\
+					<option value="'+Locale.tr("No topic")+'">'+Locale.tr("No topic")+'</option>'
+					+ topic_html + '</select>');
+					
     return TemplateInfo({
       'element': this.element,
       'sunstone_template': this.element.TEMPLATE.SUNSTONE||{},
-	  // 'topical_plan': tplan
     });
   }
 
