@@ -20,7 +20,6 @@ define(function(require) {
    */
 
   var TemplateInfo = require('hbs!./info/html');
-  // var TemplateChgrpTr = require('hbs!./info/chgrp-tr');
   var ResourceSelect = require('utils/resource-select');
   var TemplateUtils = require('utils/template-utils');
   var Locale = require('utils/locale');
@@ -95,12 +94,7 @@ define(function(require) {
 
   function _setup(context) {
     var that = this;
-	// context.on("click", "#resource_tab_a", function() {
-		// alert("buttonA clicked");
-		// $("#resources_tab-label").click();
-	// });
-
-    // Sunstone.runAction("Request.get_topical_plan");
+	
 	$.post("get_topical_plan", function(data1, stat){
 		// console.log("Success: " + JSON.stringify(data1.topics) + "\n" +stat);
 		var topic_html = '';
@@ -112,11 +106,9 @@ define(function(require) {
 						+ topic_html + '</select>');
 	});
 
-					
-					
+
 	context.off("click", "#resource_tab_b");
 	context.on("click", "#resource_tab_b", function() {
-		// alert("buttonB clicked");
 		$("#resources_tab-label").click();
 	});
 	
@@ -163,137 +155,6 @@ define(function(require) {
       Sunstone.runAction("Request.change", "topic", topic);
 	})
 	
-	
-	
-    // // Template update
-    // // TODO: simplify interface?
-    // var strippedTemplate = $.extend({}, this.element.TEMPLATE);
-    // delete strippedTemplate["SSH_PUBLIC_KEY"];
-    // delete strippedTemplate["SUNSTONE"];
-
-    // var hiddenValues = {};
-
-    // if (this.element.TEMPLATE.SSH_PUBLIC_KEY != undefined) {
-      // hiddenValues.SSH_PUBLIC_KEY = this.element.TEMPLATE.SSH_PUBLIC_KEY;
-    // }
-    // if (this.element.TEMPLATE.SUNSTONE != undefined) {
-      // hiddenValues.SUNSTONE = this.element.TEMPLATE.SUNSTONE;
-    // }
-
-    // TemplateTable.setup(strippedTemplate, RESOURCE, this.element.ID, context, hiddenValues);
-    // //===
-
-    // Chgrp
-    context.off("click", "#div_edit_chg_group_link");
-    context.on("click", "#div_edit_chg_group_link", function() {
-      ResourceSelect.insert({
-        context: $('#value_td_group', context),
-        resourceName: 'Group',
-        initValue: that.element.GID
-      });
-    });
-
-    context.off("change", "#value_td_group .resource_list_select");
-    context.on("change", "#value_td_group .resource_list_select", function() {
-      var newGroupId = $(this).val();
-      if (newGroupId != "") {
-        Sunstone.runAction(RESOURCE + ".chgrp", [that.element.ID], newGroupId);
-      }
-    });
-
-    // SSH input
-
-    context.off("click", ".user_ssh_public_key_edit");
-    context.on("click", ".user_ssh_public_key_edit", function() {
-      $("#user_ssh_public_key_text", context).hide();
-      $("#user_ssh_public_key_textarea", context).show().focus();
-    });
-
-    // Password button
-    context.off("click", "#update_password");
-    context.on("click", "#update_password", function(){
-      Sunstone.getDialog(PASSWORD_DIALOG_ID).setParams(
-        {selectedElements: [that.element.ID]});
-      Sunstone.getDialog(PASSWORD_DIALOG_ID).reset();
-      Sunstone.getDialog(PASSWORD_DIALOG_ID).show();
-    });
-
-    context.off("change", "#user_ssh_public_key_textarea");
-    context.on("change", "#user_ssh_public_key_textarea", function() {
-      var template_str = 'SSH_PUBLIC_KEY = "'+TemplateUtils.escapeDoubleQuotes($(this).val())+'"';
-
-      Sunstone.runAction("User.append_template", that.element.ID, template_str);
-    });
-
-    context.off("focusout", "#user_ssh_public_key_textarea");
-    context.on("focusout", "#user_ssh_public_key_textarea", function() {
-      $("#user_ssh_public_key_text", context).show();
-      $("#user_ssh_public_key_textarea", context).hide();
-    });
-
-    $("#user_ssh_public_key_text", context).show();
-    $("#user_ssh_public_key_textarea", context).hide();
-      
-    // Change table Order
-    context.off("click", "#div_edit_table_order")
-    context.on("click", "#div_edit_table_order", function() {
-      $(".value_td_table_order", context).html('<select id="table_order_select">' +
-         '<option value="asc">' + Locale.tr("ascending") + '</option>' +
-         '<option value="desc">' + Locale.tr("descending") + '</option>' +
-       '</select>');
-
-      if (that.element.TEMPLATE.SUNSTONE && that.element.TEMPLATE.SUNSTONE.TABLE_ORDER) {
-        $('#table_order_select', context).val(that.element.TEMPLATE.SUNSTONE.TABLE_ORDER);
-      }
-    });
-
-    context.off("change", "#table_order_select")
-    context.on("change", "#table_order_select", function() {
-      var sunstone_setting = {TABLE_ORDER : $(this).val()};
-      Sunstone.runAction("User.append_sunstone_setting_refresh", that.element.ID, sunstone_setting);
-    });
-
-    // Change language
-    context.off("click", "#div_edit_language")
-    context.on("click", "#div_edit_language", function() {
-      $(".value_td_language", context).html('<select id="language_select">' +
-         Locale.language_options +
-       '</select>');
-
-      if (that.element.TEMPLATE.SUNSTONE && that.element.TEMPLATE.SUNSTONE.LANG) {
-        $('#language_select', context).val(that.element.TEMPLATE.SUNSTONE.LANG);
-      }
-    });
-
-    context.off("change", "#language_select")
-    context.on("change", "#language_select", function() {
-      var sunstone_setting = {LANG : $(this).val()};
-      Sunstone.runAction("User.append_sunstone_setting_refresh", that.element.ID, sunstone_setting);
-    });
-
-    // Change view
-    context.off("click", "#div_edit_view")
-    context.on("click", "#div_edit_view", function() {
-      var options = '';
-      $.each( config['available_views'], function(id, view) {
-        options += '<option value="'+view+'">'+view+'</option>';
-      });
-
-      $(".value_td_view", context).html('<select id="view_select">' +
-         options +
-       '</select>');
-
-      if (that.element.TEMPLATE.SUNSTONE && that.element.TEMPLATE.SUNSTONE.DEFAULT_VIEW) {
-        $('#view_select', context).val(that.element.TEMPLATE.SUNSTONE.DEFAULT_VIEW);
-      }
-    });
-
-    context.off("change", "#view_select")
-    context.on("change", "#view_select", function() {
-      var sunstone_setting = {DEFAULT_VIEW : $(this).val()};
-      Sunstone.runAction("User.append_sunstone_setting_refresh", that.element.ID, sunstone_setting);
-    });
-
     return false;
   }
 });
