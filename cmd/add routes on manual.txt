@@ -1,0 +1,6 @@
+http://docs.opennebula.org/5.0/integration/references/sunstone_dev.html#custom-routes-for-sunstone-server
+
+Modify /etc/one/sunstone-server.conf:
+....
+:routes:
+	requestquotas
