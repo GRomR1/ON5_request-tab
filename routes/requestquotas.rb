@@ -69,7 +69,6 @@ CPU: " + params[:cpu] + "
 Комментарий: " + params[:comment]
 
   begin
-    # logger.info("\n begin")
     Net::SMTP.start('localhost') do |smtp|
       smtp.send_message message, params[:email], ['cloud@jinr.ru'] 
     # logger.info("Your message has been sent successfuly")
